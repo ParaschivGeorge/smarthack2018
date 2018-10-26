@@ -1,0 +1,1 @@
+web: java -jar target/smarthack2018-0.0.1-SNAPSHOT.jar
