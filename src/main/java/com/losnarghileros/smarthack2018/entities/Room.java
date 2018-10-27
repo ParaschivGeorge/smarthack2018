@@ -1,5 +1,6 @@
 package com.losnarghileros.smarthack2018.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.losnarghileros.smarthack2018.entities.enums.RoomType;
 
 import javax.persistence.*;
@@ -12,10 +13,13 @@ public class Room {
     private Long id;
 
     private Long capacity;
+
+    @Column(unique = true)
     private String name;
     private RoomType type;
     private Long floor;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
@@ -65,5 +69,8 @@ public class Room {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public Room() {
     }
 }

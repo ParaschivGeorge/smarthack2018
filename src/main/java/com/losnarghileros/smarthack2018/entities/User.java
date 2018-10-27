@@ -47,6 +47,7 @@ public class  User {
     @Column(name="current_login_date")
     private Date currentLoginDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 

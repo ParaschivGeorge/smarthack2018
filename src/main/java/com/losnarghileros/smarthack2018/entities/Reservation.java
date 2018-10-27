@@ -1,5 +1,8 @@
 package com.losnarghileros.smarthack2018.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,7 +20,9 @@ public class Reservation {
     @JoinColumn(name = "room_id")
     private Room room;
 
+//    @JsonFormat(pattern="dd/MM/yyyy")
     private Date date;
+
     private Long endTime;
     private Long startTime;
 
@@ -67,5 +72,16 @@ public class Reservation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Reservation() {
+    }
+
+    public Reservation(User user, Room room, Date date, Long startTime, Long endTime) {
+        this.user = user;
+        this.room = room;
+        this.date = date;
+        this.endTime = endTime;
+        this.startTime = startTime;
     }
 }
