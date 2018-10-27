@@ -1,7 +1,7 @@
 package com.losnarghileros.smarthack2018.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import com.losnarghileros.smarthack2018.entities.enums.UserType;
 
 import javax.persistence.*;
@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "user")
+//@JsonIdentityInfo(generator =  ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class  User {
 
     @Id
@@ -47,6 +48,7 @@ public class  User {
     @Column(name="current_login_date")
     private Date currentLoginDate;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 

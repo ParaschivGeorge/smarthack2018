@@ -1,21 +1,26 @@
 package com.losnarghileros.smarthack2018.entities;
 
+import com.fasterxml.jackson.annotation.*;
 import com.losnarghileros.smarthack2018.entities.enums.RoomType;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Long capacity;
+
+    @Column(unique = true)
     private String name;
     private RoomType type;
     private Long floor;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
@@ -65,5 +70,8 @@ public class Room {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public Room() {
     }
 }
