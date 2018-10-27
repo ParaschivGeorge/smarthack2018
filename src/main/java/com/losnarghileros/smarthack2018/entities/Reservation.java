@@ -1,21 +1,24 @@
 package com.losnarghileros.smarthack2018.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
@@ -35,6 +38,10 @@ public class Reservation {
     }
 
     public Room getRoom() {
+        return room;
+    }
+
+    public Room getRoomData() {
         return room;
     }
 
@@ -67,6 +74,10 @@ public class Reservation {
     }
 
     public User getUser() {
+        return user;
+    }
+
+    public User getUserData() {
         return user;
     }
 

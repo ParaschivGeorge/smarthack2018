@@ -1,12 +1,13 @@
 package com.losnarghileros.smarthack2018.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import com.losnarghileros.smarthack2018.entities.enums.RoomType;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +20,7 @@ public class Room {
     private RoomType type;
     private Long floor;
 
-    @JsonIgnore
+    @JsonBackReference
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
