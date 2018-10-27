@@ -39,9 +39,9 @@ public class ReservationController {
             @PageableDefault(page = 0, size = 9999)Pageable pageable,
             @RequestParam(required = false) String email,
             @RequestParam(required = false) String roomName,
-            @RequestParam(required = false) Date date,
-            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Long startTime,
-            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Long endTime,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+            @RequestParam(required = false) Long startTime,
+            @RequestParam(required = false) Long endTime,
             @RequestParam(required = false) Long capacity,
             @RequestParam(required = false) RoomType roomType,
             @RequestParam(required = false) Long floor
