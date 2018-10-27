@@ -6,6 +6,7 @@ import com.losnarghileros.smarthack2018.entities.enums.UserType;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -45,6 +46,9 @@ public class  User {
     @JsonIgnore
     @Column(name="current_login_date")
     private Date currentLoginDate;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 
     public Long getId() {
         return id;
@@ -119,6 +123,14 @@ public class  User {
     }
 
     public User() {
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public User(String username, String email, UserType type, boolean enabled, String password, Date lastPasswordResetDate, Date lastLoginDate, Date currentLoginDate) {
