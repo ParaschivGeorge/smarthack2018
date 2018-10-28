@@ -70,7 +70,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/register").permitAll()
-//                .antMatchers(HttpMethod.POST,"/recommend").hasAuthority(UserType.USER.name())
+                .antMatchers(HttpMethod.POST,"/recommend").hasAuthority(UserType.USER.name())
                 .antMatchers(HttpMethod.GET,"/reservation/**").authenticated()
                 .antMatchers(HttpMethod.POST,"/reservation/**").authenticated()
                 .antMatchers(HttpMethod.PUT,"/reservation/**").authenticated()
